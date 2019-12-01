@@ -1,7 +1,10 @@
 package quoters;
 
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import screensaver.ColorFrame;
+import screensaver.Config;
 
 public class TerminatorQuoterTest {
 
@@ -24,5 +27,14 @@ public class TerminatorQuoterTest {
     public void propertyContextTest(){
         PropertyFileApplicationContext context = new PropertyFileApplicationContext("context.properties");
         context.getBean(Quoter.class).sayQuote();
+    }
+
+    @Test
+    public void applicationContextTest() throws InterruptedException {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        while (true) {
+            context.getBean(ColorFrame.class).showOnRandomPlace();
+            Thread.sleep(1000);
+        }
     }
 }
