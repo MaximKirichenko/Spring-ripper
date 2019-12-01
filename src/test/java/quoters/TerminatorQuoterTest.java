@@ -19,4 +19,10 @@ public class TerminatorQuoterTest {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         context.getBean(Quoter.class).sayQuote();
     }
+
+    @Test
+    public void propertyContextTest(){
+        PropertyFileApplicationContext context = new PropertyFileApplicationContext("context.properties");
+        context.getBean(Quoter.class).sayQuote();
+    }
 }
